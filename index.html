@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiTry PR</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
+            
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        header .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        header .burger {
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .slider {
+            position: relative;
+            margin: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .slide {
+            display: none;
+            padding: 20px;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+        }
+
+        .slide img {
+            width: 150px;
+            height: auto;
+            margin-left: 20px;
+            border-radius: 5px;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        .info-boxes {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px;
+        }
+
+        .info-box {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f4f4f4;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 45%;
+        }
+
+        .info-box i {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .promotion {
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f4f4f4;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .promotion img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .promotion button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .section-boxes {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px;
+        }
+
+        .section-box {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #f4f4f4;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 45%;
+        }
+
+        .section-box i {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+
+        .navigation a {
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .navigation a i {
+            display: block;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="BiTry Logo">
+            <span>BiTry PR</span>
+        </div>
+        <div class="burger"><i class="fas fa-bars"></i></div>
+    </header>
+
+    <div class="slider">
+        <div class="slide active">
+            <div>
+                <h2>Slide 1 Title</h2>
+                <p>Slide 1 description text goes here.</p>
+            </div>
+            <img src="slide1.jpg" alt="Slide 1">
+        </div>
+        <!-- <div class="slide">
+            <div>
+                <h2>Slide 2 Title</h2>
+                <p>Slide 2 description text goes here.</p>
+            </div>
+            <img src="slide2.jpg" alt="Slide 2">
+        </div> -->
+        <div class="slide">
+            <div>
+                <h2>Slide 3 Title</h2>
+                <p>Slide 3 description text goes here.</p>
+            </div>
+            <img src="slide3.jpg" alt="Slide 3">
+        </div>
+    </div>
+
+    <div class="info-boxes">
+        <div class="info-box" onclick="window.location.href='/podpiska'">
+    <i class="fas fa-wallet"></i>
+    <span>Бюджет</span>
+</div>
+
+        <div class="info-box">
+            <i class="fas fa-eye"></i>
+            <span>Посмотрели</span>
+        </div>
+    </div>
+
+    <div class="promotion">
+        <img src="promotion.jpg" alt="Promotion">
+        <h2>Запустить продвижение</h2>
+        <p>Описание продвижения с ключевыми выгодами.</p>
+        <button id="reklama">Запустить продвижение</button>
+    </div>
+
+    <div class="section-boxes">
+        <div class="section-box">
+            <i class="fas fa-users"></i>
+            <span>Наши Блогеры</span>
+        </div>
+        <div class="section-box">
+            <i class="fas fa-question-circle"></i>
+            <span>Задать вопрос</span>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <a href="#"><i class="fas fa-ad" ></i>Реклама</a>
+        <a href="#"><i class="fas fa-handshake" id="barter"></i>Бартеры</a>
+        <a href="#"><i class="fas fa-users" id="blogers"></i>Блогеры</a>
+        <a href="#"><i class="fas fa-user" id="prof"></i>Профиль</a>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }, 10000);
+
+
+        function sendBudgetMessage() {
+        fetch('/send-budget', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ userId: 6850731097 })
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Сообщение отправлено!');
+            } else {
+                alert('Ошибка при отправке сообщения.');
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка:', error);
+            alert('Ошибка при отправке сообщения.');
+        });
+    }
+
+
+    // Получаем кнопку по её ID
+document.getElementById('barter').addEventListener('click', () => {
+    // Переход на вторую страницу
+    window.location.href = 'barter.html';
+});
+
+document.getElementById('blogers').addEventListener('click', () => {
+    // Переход на вторую страницу
+    window.location.href = 'page2.html';
+});
+
+document.getElementById('prof').addEventListener('click', () => {
+    // Переход на вторую страницу
+    window.location.href = 'kabinet.html';
+});
+
+document.getElementById('reklama').addEventListener('click', () => {
+    // Переход на вторую страницу
+    window.location.href = 'reklama.html';
+});
+
+
+    </script>
+</body>
+</html>

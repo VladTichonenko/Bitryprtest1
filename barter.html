@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barter Ads</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .ad {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: box-shadow 0.3s;
+        }
+
+        .ad:hover {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .ad img {
+            width: 80px;
+            height: 80px;
+            margin-right: 20px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .ad-title {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .modal-content img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .modal-content h2 {
+            margin-top: 0;
+        }
+
+        .modal-content .conditions {
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        .response-btn {
+            display: block;
+            margin: 20px auto 0;
+            padding: 10px 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .response-btn:hover {
+            background: #0056b3;
+        }
+
+        .add-btn {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #28a745;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .add-btn span {
+            color: white;
+            font-size: 2em;
+            line-height: 1;
+        }
+
+        .add-btn:hover {
+            background: #218838;
+        }
+
+        .form-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-content {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .form-content h2 {
+            margin-top: 0;
+        }
+
+        .form-content label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .form-content input, .form-content textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-content .help-icon {
+            font-size: 0.8em;
+            margin-left: 5px;
+            cursor: pointer;
+            color: #888;
+        }
+
+        .form-content .help-icon:hover {
+            color: #555;
+        }
+
+        .form-content .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+
+        .form-content button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .form-content button:hover {
+            background: #0056b3;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+
+        .navigation a {
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .navigation a i {
+            display: block;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="ad" onclick="openModal('ad1')">
+            <img src="m.jpg" alt="Ad Image">
+            <div class="ad-title">Кофейня "M"</div>
+        </div>
+
+        <div class="ad" onclick="openModal('ad2')">
+            <img src="example2.jpg" alt="Ad Image">
+            <div class="ad-title">Example Barter 2</div>
+        </div>
+    </div>
+
+    <div class="modal" id="ad1-modal" onclick="closeModal('ad1')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closeModal('ad1')">&times;</span>
+            <img src="m.jpg" alt="Ad Image">
+            <h2>Кофейня "M"</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. <span class="conditions">Conditions for barter</span>.</p>
+            <button class="response-btn">Respond</button>
+        </div>
+    </div>
+
+    <div class="modal" id="ad2-modal" onclick="closeModal('ad2')">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closeModal('ad2')">&times;</span>
+            <img src="example2.jpg" alt="Ad Image">
+            <h2>Example Barter 2</h2>
+            <p>Quisque vel quam euismod, fermentum orci ac, sagittis nunc. <span class="conditions">Conditions for barter</span>.</p>
+            <button class="response-btn">Respond</button>
+        </div>
+    </div>
+
+    <div class="add-btn" onclick="openFormModal()">
+        <span>+</span>
+    </div>
+
+    <div class="form-modal" id="form-modal" onclick="closeFormModal()">
+        <div class="form-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closeFormModal()">&times;</span>
+            <h2>Добавить объявление</h2>
+            <label for="company-name">Название вашей компании</label>
+            <input type="text" id="company-name" placeholder="Введите название компании">
+
+            <label for="photo">Фото</label>
+            <input type="file" id="photo">
+
+            <label for="description">Описание</label>
+            <textarea id="description" placeholder="Введите описание"></textarea>
+
+            <label for="conditions">Условие</label>
+            <textarea id="conditions" placeholder="Введите условия"></textarea>
+
+           
+            <label for="expiry">Сроки объявления 
+                <span class="help-icon" title="Объявление автоматически удалится после истечения срока.">?</span>
+            </label>
+            <input type="date" id="expiry">
+
+            <button>Добавить</button>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <a href="#"><i class="fas fa-ad" id="glav"></i>Реклама</a>
+        <a href="#"><i class="fas fa-handshake"></i>Бартеры</a>
+        <a href="#"><i class="fas fa-users"></i>Блогеры</a>
+        <a href="#"><i class="fas fa-user" id="prof"></i>Профиль</a>
+    </div>
+
+    <script>
+        function openModal(adId) {
+            document.getElementById(adId + '-modal').style.display = 'flex';
+        }
+
+        function closeModal(adId) {
+            document.getElementById(adId + '-modal').style.display = 'none';
+        }
+
+        function openFormModal() {
+            document.getElementById('form-modal').style.display = 'flex';
+        }
+
+        function closeFormModal() {
+            document.getElementById('form-modal').style.display = 'none';
+        }
+
+        document.getElementById('glav').addEventListener('click', () => {
+    // Переход на вторую страницу
+    window.location.href = 'index.html';
+});
+
+document.getElementById('prof').addEventListener('click', () => {
+    // Переход на вторую страницу
+    window.location.href = 'kabinet.html';
+});
+    </script>
+</body>
+</html>

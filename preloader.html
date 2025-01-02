@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BiTry PR</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .intro {
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .card-container {
+            position: absolute;
+            bottom: -100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            animation: slideUp 2s 2s forwards;
+        }
+
+        @keyframes slideUp {
+            0% { bottom: -100%; }
+            100% { bottom: 10%; }
+        }
+
+        .card {
+            background-color: #111;
+            border: 1px solid #fff;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .icons {
+            margin-bottom: 10px;
+            font-size: 2rem;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .text {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #fff;
+            color: #000;
+            text-transform: uppercase;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #555;
+            color: #fff;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="intro">BiTry PR</div>
+
+    <div class="card-container hidden">
+        <div class="card">
+            <div class="icons">📈</div>
+            <div class="title">Удобство работы</div>
+            <div class="text">BiTry PR делает процесс размещения рекламы простым и удобным.</div>
+            <div class="button" onclick="nextCard(1)">Далее</div>
+        </div>
+    </div>
+
+    <script>
+        let currentCard = 0;
+        const cards = [
+            {
+                icons: "📈",
+                title: "Удобство работы",
+                text: "BiTry PR делает процесс размещения рекламы простым и удобным.",
+            },
+            {
+                icons: "📊",
+                title: "Аналитика",
+                text: "Вместе с BiTry PR вы сможете анализировать эффективность рекламы.",
+            },
+            {
+                icons: "🤝",
+                title: "Поддержка",
+                text: "Наша команда всегда готова помочь в продвижении вашего проекта.",
+            },
+            {
+                icons: "🚀",
+                title: "Начало пути",
+                text: "Привлекайте новую аудиторию и растите вместе с BiTry PR!",
+                button: "Начать",
+            },
+        ];
+
+        const intro = document.querySelector('.intro');
+        const container = document.querySelector('.card-container');
+        const card = container.querySelector('.card');
+
+        intro.addEventListener('animationend', () => {
+            container.classList.remove('hidden');
+            updateCard(0);
+        });
+
+        function updateCard(index) {
+            const data = cards[index];
+            card.querySelector('.icons').textContent = data.icons;
+            card.querySelector('.title').textContent = data.title;
+            card.querySelector('.text').textContent = data.text;
+            const button = card.querySelector('.button');
+            button.textContent = data.button || "Далее";
+            button.setAttribute('onclick', index === cards.length - 1 ? 'startJourney()' : `nextCard(${index + 1})`);
+        }
+
+        function nextCard(index) {
+            updateCard(index);
+        }
+
+        function startJourney() {
+            alert("Добро пожаловать в BiTry PR!");
+        }
+    </script>
+</body>
+</html>

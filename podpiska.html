@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт с карточками</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+         <i class="fa-regular fa-star" style="font-size: 40px;"></i>
+            <h3>Star Starter</h3>
+            <p>5$</p>
+            <button class="buy-button" data-modal="modal1">Купить</button>
+        </div>
+        <div class="card">
+            <i class="fas fa-star icon"></i>
+            <h3>Заголовок 2</h3>
+            <p>Описание 2</p>
+            <button class="buy-button" data-modal="modal2">Купить</button>
+        </div>
+        <div class="card">
+            <i class="fas fa-star icon"></i>
+            <h3>Заголовок 3</h3>
+            <p>Описание 3</p>
+            <button class="buy-button" data-modal="modal3">Купить</button>
+        </div>
+        <div class="card">
+            <i class="fas fa-star icon"></i>
+            <h3>Заголовок 4</h3>
+            <p>Описание 4</p>
+            <button class="buy-button" data-modal="modal4">Купить</button>
+        </div>
+        <div class="card">
+            <i class="fas fa-star icon"></i>
+            <h3>Заголовок 5</h3>
+            <p>Описание 5</p>
+            <button class="buy-button" data-modal="modal5">Купить</button>
+        </div>
+        <div class="card">
+            <i class="fa-light fa-star"></i>
+            <h3>Заголовок 6</h3>
+            <p>Описание 6</p>
+            <button class="buy-button" data-modal="modal6">Купить</button>
+        </div>
+    </div>
+
+    <!-- Модальные окна -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+               <i class="fa-light fa-star fa-fade"></i>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li>Начальный уровень, для тех, кто только начинает знакомство с продуктом.</li>
+                    <li>Цена:5$</li>
+                </ul>
+            </div>
+            <button class="buy-button">Купить</button>
+        </div>
+    </div>
+
+     <!-- Модальные окна -->
+     <div id="modal2" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <i class="fas fa-star"></i>
+            </div>
+            <div class="modal-body">
+                <ul>
+                    <li>Начальный уровень, для тех, кто только начинает знакомство с продуктом.</li>
+                    <li>Цена:5$</li>
+                </ul>
+            </div>
+            <button class="buy-button">Купить</button>
+        </div>
+    </div>
+
+
+    
+    <div class="navigation">
+        <a id="glav"><i class="fas fa-ad" id="glav"></i>Реклама</a>
+        <a id="barter"><i class="fas fa-handshake"></i>Бартеры</a>
+        <a id="blogers"><i class="fas fa-users"></i>Блогеры</a>
+        <a id="prof"><i class="fas fa-user"></i>Профиль</a>
+    </div>
+
+
+
+
+
+    <!-- Другие модальные окна... -->
+
+    <script src="script.js"></script>
+</body>
+</html>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5efe8;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.icon {
+    font-size: 40px;
+    color: #f39c12;
+}
+
+h3 {
+    margin: 20px 0;
+    font-size: 18px;
+    color: #333;
+}
+
+p {
+    font-size: 14px;
+    color: #777;
+}
+
+.buy-button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.buy-button:hover {
+    background-color: #444;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.modal-header {
+    font-size: 40px;
+    color: #f39c12;
+    margin-bottom: 20px;
+}
+
+.modal-body ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.modal-body li {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+
+.navigation {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+
+        .navigation a {
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .navigation a i {
+            display: block;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+</style>
+<script>
+        // Этот код выполнится только на странице podpiska.html
+
+        // Открытие модальных окон
+        document.querySelectorAll('.buy-button').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation(); // Чтобы клик по кнопке не закрывал модальное окно
+                const modalId = button.getAttribute('data-modal');
+                const modal = document.getElementById(modalId);  // Получаем правильное модальное окно
+                if (modal) {
+                    modal.style.display = 'flex';  // Открываем модальное окно
+                }
+            });
+        });
+
+        // Закрытие модальных окон при клике на фоновую область
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        });
+
+        // Обработчик для кнопки "Купить", которая отправляет сообщение
+        document.querySelectorAll('.buy-button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Отправка POST-запроса на сервер для отправки сообщения
+                fetch('/send-budget', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ userId: 6850731097 })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Сообщение отправлено!');
+                    } else {
+                        alert('Ошибка при отправке сообщения.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Ошибка:', error);
+                    alert('Ошибка при отправке сообщения.');
+                });
+            });
+        });
+
+
+        document.getElementById('barter').addEventListener('click', () => {
+            window.location.href = 'barter.html';
+        });
+
+        document.getElementById('glav').addEventListener('click', () => {
+            window.location.href = 'index.html'; // Исправьте путь, если нужно
+        });
+
+        document.getElementById('blogers').addEventListener('click', () => {
+            window.location.href = 'blogers.html';
+        });
+
+        document.getElementById('prof').addEventListener('click', () => {
+            window.location.href = 'kabinet.html';
+        });
+
+        document.getElementById('back').addEventListener('click', () => {
+            window.location.href = 'kabinet.html'; // Замените на нужный путь
+        });
+    </script>
